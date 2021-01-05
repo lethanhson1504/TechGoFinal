@@ -18,15 +18,13 @@ public class sign_up extends AppCompatActivity {
     EditText password_text;
     EditText email_text;
     EditText phone_text;
-    String is_customer;
+    String user_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         setAppLocale("en");
-
-        is_customer = "false";
 
         email_text = findViewById(R.id.email_register_text);
 
@@ -39,7 +37,18 @@ public class sign_up extends AppCompatActivity {
         Customer_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                is_customer = "true";
+                user_type = "customer";
+                System.out.println(user_type);
+            }
+        }) ;
+
+        Button Driver_bt = findViewById(R.id.driver_bt);
+
+        Driver_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user_type = "driver";
+                System.out.println(user_type);
             }
         }) ;
 
@@ -48,7 +57,7 @@ public class sign_up extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String is_cus = is_customer;
+                String us_type = user_type;
                 String email =  email_text.getText().toString();
                 String phone =  phone_text.getText().toString();
                 String pw =  password_text.getText().toString();
@@ -58,7 +67,7 @@ public class sign_up extends AppCompatActivity {
                 intent.putExtra("PW", pw);
                 intent.putExtra("PHONE", phone);
                 intent.putExtra("EMAIL", email);
-                intent.putExtra("IS_CUS", is_cus);
+                intent.putExtra("IS_CUS", us_type);
 
                 startActivity(intent);
             }

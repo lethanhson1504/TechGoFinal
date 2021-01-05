@@ -50,12 +50,9 @@ public class sign_up2 extends AppCompatActivity implements Serializable {
                 String email = getIntent().getStringExtra("EMAIL");
                 String phone = getIntent().getStringExtra("PHONE");
 
-                String is_customer = getIntent().getStringExtra("IS_CUS");
+                //string, user type
+                String us_type = getIntent().getStringExtra("IS_CUS");
 
-                //boolean to store customer or driver
-                boolean is_cus = false;
-                if(is_customer.equals("true"))
-                    is_cus = true;
 
             }
         }) ;
