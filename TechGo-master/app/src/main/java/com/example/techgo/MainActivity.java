@@ -1,5 +1,6 @@
 package com.example.techgo;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -42,7 +43,15 @@ public class MainActivity extends AppCompatActivity {
     private StorageReference storageRef;
     private ImageView profilePic;
     private Uri imageUri;
+    private String language;
+    private Button change_lang_bt;
     //
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase, "vn"));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +62,19 @@ public class MainActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
         super.onCreate(savedInstanceState);
-        setAppLocale("en");
+
+
+        language = "en";
+        //LocaleHelper.setLocale(MainActivity.this, "vn");
+
+
         setContentView(R.layout.activity_main);
         btLogin = findViewById(R.id.login);
         Button bt_fg = findViewById(R.id.forget_password);
-
+        change_lang_bt = findViewById(R.id.change_language_bt);
         edUsername = findViewById(R.id.user_Name);
         edPassword = findViewById(R.id.password);
-
+        change_lang_bt.setText("VN");
 
         bt_fg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         Button bt_signup = findViewById(R.id.new_account);
         bt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +122,30 @@ public class MainActivity extends AppCompatActivity {
         }) ;
 
 
-    }
 
+        change_lang_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*if(language.equals("vn")) {
+                    LocaleHelper.setLocale(MainActivity.this, "en");
+                    language = "en";
+                    change_lang_bt.setText("VN");
+
+                }
+                else {
+                    LocaleHelper.setLocale(MainActivity.this, "vn");
+                    language = "vn";
+                    change_lang_bt.setText("EN");
+
+                }*/
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, HomeScreen.class);
+                startActivity(intent);
+            }
+
+        }) ;
+
+        }
     private void alertDialog(String alert) {
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
         dialog.setTitle(alert);
@@ -137,5 +174,11 @@ public class MainActivity extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         conf.setLocale(new Locale(localeCode.toLowerCase()));
         res.updateConfiguration(conf, dm);
+    }
+
+    private void updateView(String language){
+        Context context = LocaleHelper.setLocale(this, language);
+        Resources resources = context.getResources();
+
     }
 }

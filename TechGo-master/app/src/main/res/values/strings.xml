@@ -16,6 +16,7 @@
     <string name="bike">Bike</string>;
     <string name="car">Car</string>;
     <string name="book">Book</string>;
+    <string name="findingDriver">Finding driver</string>;
     <string name="confirm">Confirm</string>
     <string name="display_name">Display name</string>;
     <string name="forgot_password">Forgot password</string>;
@@ -52,6 +53,7 @@
     <string name="book_a_trip">Book a trip</string>;
     <string name="Trip_to">Trip to:</string>;
     <string name="type_address">Type address</string>;
+    <string name="cancelTrip">Are you sure to cancel this trip?</string>
 
 
     <string-array name="payment_method">

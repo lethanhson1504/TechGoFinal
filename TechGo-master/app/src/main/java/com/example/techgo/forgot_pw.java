@@ -13,6 +13,8 @@ public class forgot_pw extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_pw);
+
+
         Button bt = findViewById(R.id.reset);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override

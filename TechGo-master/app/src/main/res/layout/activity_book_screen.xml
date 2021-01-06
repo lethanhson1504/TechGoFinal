@@ -44,7 +44,7 @@
 
         <Button
             android:id="@+id/book_bike_bt"
-            android:layout_width="156dp"
+            android:layout_width="151dp"
             android:layout_height="48dp"
             android:layout_marginStart="52dp"
             android:text="@string/bike"
@@ -57,11 +57,11 @@
             android:id="@+id/book_car_bt"
             android:layout_width="156dp"
             android:layout_height="48dp"
+            android:layout_marginEnd="44dp"
             android:text="@string/car"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.794"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/book_bike_bt"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.575" />
 

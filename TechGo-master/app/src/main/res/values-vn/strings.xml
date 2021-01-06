@@ -19,6 +19,7 @@
     <string name="bike">Xe máy</string>;
     <string name="car">Xe hơi</string>;
     <string name="book">Đặt xe</string>;
+    <string name="findingDriver">Đang tìm tài xế cho bạn</string>;
     <string name = "or_create_new_account">hay tạo tài khoản mới?</string>;
     <string name = "back" >Quay về</string>;
     <string name="driver" >Tài xế</string>;
@@ -50,6 +51,7 @@
     <string name = "book_a_trip">Đặt xe</string>;
     <string name = "Trip_to">Chuyến đi tới:</string>;
     <string name="type_address">Nhập địa chỉ</string>;
+    <string name="cancelTrip">Bạn có muốn hủy chuyến đi này không?</string>
 
     <string-array name="payment_method">
         <item>Tiền mặt</item>

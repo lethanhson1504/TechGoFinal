@@ -19,6 +19,7 @@ public class wallet extends AppCompatActivity {
             public void onClick(View v) {
                 rechargeDialog dialog_recharge = new rechargeDialog();
                 dialog_recharge.showPopupWindow(v);
+
             }
         }) ;
 
@@ -28,6 +29,7 @@ public class wallet extends AppCompatActivity {
             public void onClick(View v) {
                 withdrawDialog dialog = new withdrawDialog();
                 dialog.showPopupWindow(v);
+
             }
         }) ;
     }
