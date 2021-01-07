@@ -30,44 +30,44 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class pickingLocationCustomer extends FragmentActivity implements OnMapReadyCallback {
+public class DestinationLocation extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     Button bt_location;
     FusedLocationProviderClient fusedLocationProviderClient;
     Button bt_confirm;
-    String address_pick_up;
-    LatLng pick_up_latlng;
+    String address_destination;
+    LatLng destination_latlng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_picking_location_customer1);
+        setContentView(R.layout.activity_destination);
 
-        bt_location = findViewById(R.id.bt_location);
+        bt_location = findViewById(R.id.bt_destin_location);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         bt_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ActivityCompat.checkSelfPermission(com.example.techgo.pickingLocationCustomer.this,
+                if(ActivityCompat.checkSelfPermission(com.example.techgo.DestinationLocation.this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
                     getLocaion();
                 } else {
-                    ActivityCompat.requestPermissions(com.example.techgo.pickingLocationCustomer.this,
+                    ActivityCompat.requestPermissions(com.example.techgo.DestinationLocation.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
                 }
             }
         });
 
-        bt_confirm = findViewById(R.id.confirm_picking_bt);
+        bt_confirm = findViewById(R.id.confirm_destination_bt);
         bt_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent();
-                intent.putExtra("PICK_ADRS", address_pick_up);
-                setResult(1,intent);
+                intent.putExtra("DES_ADRS", address_destination);
+                setResult(2, intent);
                 finish();//finishing activity
             }
         });
@@ -76,7 +76,7 @@ public class pickingLocationCustomer extends FragmentActivity implements OnMapRe
 
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager()
-                        .findFragmentById(R.id.picking_map_customer);
+                        .findFragmentById(R.id.destination_map_customer);
         mapFragment.getMapAsync(this);
 
     }
@@ -89,31 +89,22 @@ public class pickingLocationCustomer extends FragmentActivity implements OnMapRe
                 if(location != null){
 
                     try {
-                        Geocoder geocoder = new Geocoder(com.example.techgo.pickingLocationCustomer.this, Locale.getDefault());
+                        Geocoder geocoder = new Geocoder(com.example.techgo.DestinationLocation.this, Locale.getDefault());
                         List<Address> addresses = geocoder.getFromLocation(
                                 location.getLatitude(), location.getLongitude(), 1
                         );
-                        //set latitude on text view
-                        /*
-                        textView1.setText("" + addresses.get(0).getLatitude());
-                        textView2.setText("" + );
 
-                        textView3.setText(addresses.get(0).getCountryName());
-                        textView4.setText(addresses.get(0).getLocality());
-
-                        textView5.setText(addresses.get(0).getAddressLine(0));
-*/
                         mMap.clear();
 
                         LatLng current_pos = new LatLng(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
-                        address_pick_up = addresses.get(0).getAddressLine(0) ;
-                        Marker current_mark = mMap.addMarker(new MarkerOptions().position(current_pos).title(address_pick_up));
+                        address_destination = addresses.get(0).getAddressLine(0) ;
+                        //Marker current_mark = mMap.addMarker(new MarkerOptions().position(current_pos).title(address_destination));
 
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(current_pos));
 
-                        current_mark.showInfoWindow();
+                        //current_mark.showInfoWindow();
 
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current_pos, 18));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current_pos, 13));
 
                     } catch (IOException e){
                         e.printStackTrace();
@@ -132,17 +123,17 @@ public class pickingLocationCustomer extends FragmentActivity implements OnMapRe
             public void onMapClick(LatLng latLng) {
 
                 try {
-                    Geocoder geocoder = new Geocoder(com.example.techgo.pickingLocationCustomer.this, Locale.getDefault());
+                    Geocoder geocoder = new Geocoder(com.example.techgo.DestinationLocation.this, Locale.getDefault());
                     List<Address> addresses = geocoder.getFromLocation(
                             latLng.latitude, latLng.longitude,1
                     );
 
                     mMap.clear();
-                    address_pick_up = addresses.get(0).getAddressLine(0);
+                    address_destination = addresses.get(0).getAddressLine(0);
                     Marker markerOptions = mMap.addMarker(
                             new MarkerOptions()
                                     .position(latLng)
-                                    .title(address_pick_up));
+                                    .title(address_destination));
                     markerOptions.showInfoWindow();
 
 

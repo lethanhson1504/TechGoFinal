@@ -26,7 +26,7 @@ public class HomeScreen extends AppCompatActivity {
                 intent.setClass(HomeScreen.this, wallet.class);
                 startActivity(intent);
             }
-        }) ;
+        });
 
         Button bt_book = findViewById(R.id.book_trip_bt);
         bt_book.setOnClickListener(new View.OnClickListener() {
@@ -36,23 +36,12 @@ public class HomeScreen extends AppCompatActivity {
                 intent.setClass(HomeScreen.this, bookScreen.class);
                 startActivity(intent);
             }
-        }) ;
+        });
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+      /*  BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
+*/
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    switch (item.getItemId()){
-                        case R.id.nav_home:
-                            selectedFragment = new Fragment();
-                    }
-                }
-            };
 }

@@ -38,6 +38,7 @@
         <activity android:name=".reset_password" />
         <activity android:name=".forgot_pw" />
         <activity android:name=".pickingLocationCustomer"/>
+        <activity android:name=".DestinationLocation"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -54,7 +54,7 @@
     <string name="Trip_to">Trip to:</string>;
     <string name="type_address">Type address</string>;
     <string name="cancelTrip">Are you sure to cancel this trip?</string>
-
+    <string name="choose_address">Choose destination</string>;
 
     <string-array name="payment_method">
         <item>Cash</item>

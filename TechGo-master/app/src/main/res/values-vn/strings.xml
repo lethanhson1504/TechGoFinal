@@ -52,6 +52,7 @@
     <string name = "Trip_to">Chuyến đi tới:</string>;
     <string name="type_address">Nhập địa chỉ</string>;
     <string name="cancelTrip">Bạn có muốn hủy chuyến đi này không?</string>
+    <string name="choose_address">Chọn điểm đến</string>;
 
     <string-array name="payment_method">
         <item>Tiền mặt</item>
